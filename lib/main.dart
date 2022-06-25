@@ -33,6 +33,7 @@ class DHStudyCase extends ConsumerWidget {
             ),
             debugShowCheckedModeBanner: false,
             routeInformationParser: route.routeInformationParser,
+            routeInformationProvider: route.routeInformationProvider,
             routerDelegate: route.routerDelegate,
             localizationsDelegates: const [
               AppLocalizationsDelegate(),
@@ -51,6 +52,7 @@ class DHStudyCase extends ConsumerWidget {
               primaryColor: Colors.blue,
             ),
             debugShowCheckedModeBanner: false,
+            routeInformationProvider: route.routeInformationProvider,
             routeInformationParser: route.routeInformationParser,
             routerDelegate: route.routerDelegate,
             localizationsDelegates: const [

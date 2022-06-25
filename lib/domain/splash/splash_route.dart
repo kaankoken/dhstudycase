@@ -14,7 +14,15 @@ class SplashRoute implements IRoute {
         path: AppRoutes.SPLASH,
         name: AppRoutes.SPLASH.removeSlash,
         pageBuilder: (context, state) => Platform.isAndroid
-            ? MaterialPage(child: const SplashView(), arguments: state.extra, fullscreenDialog: true)
-            : CupertinoPage(child: const SplashView(), arguments: state.extra, fullscreenDialog: true),
+            ? MaterialPage(
+                child: const SplashView(),
+                arguments: state.extra,
+                fullscreenDialog: true,
+              )
+            : CupertinoPage(
+                child: const SplashView(),
+                arguments: state.extra,
+                fullscreenDialog: true,
+              ),
       );
 }

@@ -7,9 +7,11 @@ class AppStrings {
   static final Map<String, Map<String, String>> _localizedValues = {
     'en': {
       'app_name': 'DH Study Case',
+      'loading': 'Loading...',
     },
     'tr': {
       'app_name': 'DH Study Case',
+      'loading': 'Yükleniyor...',
     },
   };
 
@@ -18,6 +20,7 @@ class AppStrings {
   static AppStrings get instance => _instance ?? AppStrings(const Locale('en'));
 
   String get appName => _getString('app_name');
+  String get loading => _getString('loading');
 
   String getByKey(String key) => _getString(key);
   String _getString(String key) =>

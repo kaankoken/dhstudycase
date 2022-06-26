@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "initDevConfig",
+            "type": "shell",
+            "command": "cp ./config/dev.env .env",
+            "presentation": {
+                "reveal": "always",
+                "close": true
+            },
+        },
+        {
+            "label": "initProdConfig",
+            "type": "shell",
+            "command": "cp ./config/prod.env .env",
+            "presentation": {
+                "reveal": "always",
+                "close": true
+            },
+        },
+    ]
+}

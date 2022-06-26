@@ -8,10 +8,12 @@ class AppStrings {
     'en': {
       'app_name': 'DH Study Case',
       'loading': 'Loading...',
+      'youAreOffline': 'You are offline',
     },
     'tr': {
       'app_name': 'DH Study Case',
       'loading': 'Yükleniyor...',
+      'youAreOffline': 'İnternet bağlantınız yok',
     },
   };
 
@@ -21,6 +23,7 @@ class AppStrings {
 
   String get appName => _getString('app_name');
   String get loading => _getString('loading');
+  String get youAreOffline => _getString('youAreOffline');
 
   String getByKey(String key) => _getString(key);
   String _getString(String key) =>

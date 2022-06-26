@@ -36,6 +36,9 @@ dependencies:
 
   # Network
   retrofit: 3.0.1+1
+  dio: 4.0.6
+  dio_http2_adapter: 2.0.0
+  pretty_dio_logger: 1.2.0-beta-1
 
   # Local Environment
   flutter_dotenv: 5.0.2
@@ -75,3 +78,4 @@ flutter:
 
   assets:
     - assets/
+    - .env

@@ -53,3 +53,6 @@ app.*.map.json
 **/*.g.dart
 **/*.freezed.dart
 **/*.lock
+
+# Environment variables
+**/**.env

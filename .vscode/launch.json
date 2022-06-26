@@ -5,11 +5,27 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Run as Debug",
+        "name": "Run as Dev Debug",
         "request": "launch",
         "type": "dart",
         "program": "${workspaceFolder}/lib/main.dart",
-        "args": [],
+        "args": [
+          "--flavor",
+          "dev"
+        ],
+        "preLaunchTask": "initDevConfig",
+        "flutterMode": "debug"
+      },
+      {
+        "name": "Run as Prod Debug",
+        "request": "launch",
+        "type": "dart",
+        "program": "${workspaceFolder}/lib/main.dart",
+        "args": [
+          "--flavor",
+          "prod"
+        ],
+        "preLaunchTask": "initProdConfig",
         "flutterMode": "debug"
       },
     ]

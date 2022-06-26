@@ -4,6 +4,7 @@ import 'package:delivery_hero_flutter_study_case/infra/core/localization/app_loc
 import 'package:delivery_hero_flutter_study_case/infra/core/routes/routes.dart';
 import 'package:delivery_hero_flutter_study_case/infra/exports.dart';
 import 'package:delivery_hero_flutter_study_case/injector.dart';
+import 'package:delivery_hero_flutter_study_case/presentation/shared/connectivity_wrapper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -25,46 +26,48 @@ class DHStudyCase extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Platform.isAndroid
-        ? MaterialApp.router(
-            title: 'DH Study Case',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
+    return ConnectivityWrapper(
+      child: Platform.isAndroid
+          ? MaterialApp.router(
+              title: 'DH Study Case',
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+              ),
+              debugShowCheckedModeBanner: false,
+              routeInformationParser: route.routeInformationParser,
+              routeInformationProvider: route.routeInformationProvider,
+              routerDelegate: route.routerDelegate,
+              localizationsDelegates: const [
+                AppLocalizationsDelegate(),
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('tr', ''),
+                Locale('en', ''),
+              ],
+            )
+          : CupertinoApp.router(
+              title: 'DH Study Case',
+              theme: const CupertinoThemeData(
+                primaryColor: Colors.blue,
+              ),
+              debugShowCheckedModeBanner: false,
+              routeInformationProvider: route.routeInformationProvider,
+              routeInformationParser: route.routeInformationParser,
+              routerDelegate: route.routerDelegate,
+              localizationsDelegates: const [
+                AppLocalizationsDelegate(),
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('tr', ''),
+                Locale('en', ''),
+              ],
             ),
-            debugShowCheckedModeBanner: false,
-            routeInformationParser: route.routeInformationParser,
-            routeInformationProvider: route.routeInformationProvider,
-            routerDelegate: route.routerDelegate,
-            localizationsDelegates: const [
-              AppLocalizationsDelegate(),
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: const [
-              Locale('tr', ''),
-              Locale('en', ''),
-            ],
-          )
-        : CupertinoApp.router(
-            title: 'DH Study Case',
-            theme: const CupertinoThemeData(
-              primaryColor: Colors.blue,
-            ),
-            debugShowCheckedModeBanner: false,
-            routeInformationProvider: route.routeInformationProvider,
-            routeInformationParser: route.routeInformationParser,
-            routerDelegate: route.routerDelegate,
-            localizationsDelegates: const [
-              AppLocalizationsDelegate(),
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: const [
-              Locale('tr', ''),
-              Locale('en', ''),
-            ],
-          );
+    );
   }
 }

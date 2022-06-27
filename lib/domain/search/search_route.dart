@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class HomeRoute implements IRoute {
+class SearchRoute implements IRoute {
   @override
   GoRoute get route => GoRoute(
         path: AppRoutes.SEARCH,

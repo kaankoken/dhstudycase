@@ -42,5 +42,5 @@ class NetworkManager {
     return dio;
   }
 
-  static Map<String, String> get baseQueryString => {'api_key': dotEnv.env['API_KEY'] ?? ''};
+  static Map<String, dynamic> get baseQueryString => {'api_key': dotEnv.env['API_KEY'] ?? ''};
 }

@@ -4,6 +4,7 @@ import 'package:delivery_hero_flutter_study_case/infra/core/extensions/hex_to_fl
 
 class AppColors {
   static final BLACK = "#ffffff".toColor();
+  static final LIGHT_BLACK = "#222222".toColor();
   static final LIGHT_GREY = "#d3d3d3".toColor();
   static final RED = '#ff0000'.toColor();
   static final WHITE = "#ffffff".toColor();

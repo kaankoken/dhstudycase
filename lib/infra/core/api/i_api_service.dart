@@ -13,7 +13,7 @@ abstract class IApiService {
   @GET(ApiEndpoints.MOVIE_DETAILS)
   Future<MovieDetailsDto> getMovieDetails(
     @Queries() Map<String, dynamic> query,
-    @Path('movie_id') String movieId,
+    @Path('movie_id') int movieId,
   );
 
   @GET(ApiEndpoints.SEARCH)

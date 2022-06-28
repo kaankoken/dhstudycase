@@ -106,6 +106,7 @@ class SearchViewState extends BaseConsumerState<SearchView> {
                     ),
                   ),
             ),
+            const SliverToBoxAdapter(child: SizedBox(height: 16)),
           ],
         ),
       ),

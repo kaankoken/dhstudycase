@@ -8,12 +8,14 @@ class AppStrings {
     'en': {
       'app_name': 'DH Study Case',
       'loading': 'Loading...',
+      'noResult': 'No result found',
       'search': 'Type something to start',
       'youAreOffline': 'You are offline',
     },
     'tr': {
       'app_name': 'DH Study Case',
       'loading': 'Yükleniyor...',
+      'noResult': 'Sonuç bulunamadı',
       'search': 'Arama',
       'youAreOffline': 'İnternet bağlantınız yok',
     },
@@ -25,6 +27,7 @@ class AppStrings {
 
   String get appName => _getString('app_name');
   String get loading => _getString('loading');
+  String get noResult => _getString('noResult');
   String get search => _getString('search');
   String get youAreOffline => _getString('youAreOffline');
 

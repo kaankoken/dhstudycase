@@ -10,6 +10,9 @@ import 'package:delivery_hero_flutter_study_case/infra/core/utils/either.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SearchRepository implements ISearchRepository {
+  @override
+  bool isTest = false;
+
   late final IApiService _apiService;
   late final ConnectivityUtil _connectivityUtil;
   late final Ref _ref;
@@ -17,12 +20,14 @@ class SearchRepository implements ISearchRepository {
   SearchRepository(this._ref)
       : _apiService = _ref.read(apiService),
         _connectivityUtil = _ref.read(connectivityUtil);
+
   @override
   Future<Either<String, SearchDto>> search(String searchText, {int? pageNumber}) async {
-    if (_ref.read(_connectivityUtil.connectivityController).name == ConnectivityStatus.OFFLINE.name) {
-      return Either.left(appStrings.youAreOffline);
+    if (!isTest) {
+      if (_ref.read(_connectivityUtil.connectivityController).name == ConnectivityStatus.OFFLINE.name) {
+        return Either.left(appStrings.youAreOffline);
+      }
     }
-
     try {
       final query = NetworkManager.baseQueryString;
       query.putIfAbsent('include_adult', () => 'false');

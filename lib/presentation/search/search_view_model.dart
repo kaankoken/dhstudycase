@@ -2,11 +2,14 @@ import 'dart:async';
 
 import 'package:delivery_hero_flutter_study_case/application/search/interfaces/i_search_use_case.dart';
 import 'package:delivery_hero_flutter_study_case/domain/core/no_params.dart';
+import 'package:delivery_hero_flutter_study_case/domain/search/models/search_item_model.dart';
 import 'package:delivery_hero_flutter_study_case/domain/search/models/search_model.dart';
 import 'package:delivery_hero_flutter_study_case/domain/search/search_state.dart';
 import 'package:delivery_hero_flutter_study_case/infra/core/base/base_view_model.dart';
 import 'package:delivery_hero_flutter_study_case/infra/core/constants/app_dimensions.dart';
 import 'package:delivery_hero_flutter_study_case/infra/core/modules/use_case_modules.dart';
+import 'package:delivery_hero_flutter_study_case/infra/core/routes/app_routes.dart';
+import 'package:delivery_hero_flutter_study_case/infra/exports.dart';
 import 'package:delivery_hero_flutter_study_case/presentation/core/ui_state.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -47,8 +50,8 @@ class SearchViewModel extends BaseViewModel {
     controller.dispose();
   }
 
-  void navigateToDetailPage(String movieId) {
-    // TODO navigate to detail page
+  void navigateToDetailPage(String movieId, SearchItemModel item) {
+    routeManager.pushNamed(AppRoutes.MOVIE_DETAIL, params: {'id': movieId}, arguments: item);
   }
 
   void onChange(String query) {

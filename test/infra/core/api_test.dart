@@ -78,7 +78,7 @@ void main() async {
 
           final query = NetworkManager.baseQueryString;
 
-          expect(() async => await service.getMovieDetails(query, -1231), throwsException);
+          expect(() async => await service.getMovieDetails(-1231, query), throwsException);
         },
       );
 
@@ -90,7 +90,10 @@ void main() async {
           final query = NetworkManager.baseQueryString;
 
           try {
-            await service.getMovieDetails(query, 415);
+            await service.getMovieDetails(
+              415,
+              query,
+            );
           } catch (e) {
             rethrow;
           }

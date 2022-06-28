@@ -73,6 +73,8 @@ class SearchViewState extends BaseConsumerState<SearchView> {
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: _viewModel.spanCount,
                         mainAxisSpacing: AppDimensions.padding8,
+                        childAspectRatio:
+                            ref.read(_viewModel.widgetSize).width / ref.read(_viewModel.widgetSize).height,
                         crossAxisSpacing: AppDimensions.padding8,
                       ),
                       delegate: SliverChildBuilderDelegate(
@@ -87,11 +89,16 @@ class SearchViewState extends BaseConsumerState<SearchView> {
                             );
                           }
 
+                          final item = data.items?.getRange(index, index + 1).first ?? const SearchItemModel();
+
                           return SearchItem(
                             width: size.width,
                             height: size.height,
-                            onTap: () => _viewModel.navigateToDetailPage(''),
-                            item: data.items?.getRange(index, index + 1).first ?? const SearchItemModel(),
+                            onTap: () => _viewModel.navigateToDetailPage(
+                              item.id.toString(),
+                              item,
+                            ),
+                            item: item,
                           );
                         },
                         childCount: data.items?.length,

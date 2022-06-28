@@ -30,41 +30,51 @@ class SearchItem extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      child: SizedBox(
-        width: width,
-        child: Wrap(
-          children: [
-            CachedNetworkImage(
-              filterQuality: FilterQuality.high,
-              fit: BoxFit.fill,
-              height: height,
-              width: width,
-              imageUrl: url,
-              placeholder: (context, data) => SkeletonContainer(
-                radius: 0,
-                width: width,
+      child: Column(
+        children: [
+          Stack(
+            alignment: AlignmentDirectional.bottomCenter,
+            children: [
+              CachedNetworkImage(
+                filterQuality: FilterQuality.high,
+                fit: BoxFit.fill,
                 height: height,
-              ),
-              errorWidget: (_, error, errorObj) => SkeletonContainer(
-                radius: 0,
                 width: width,
-                height: height,
-                isAnimated: false,
+                imageUrl: url,
+                placeholder: (context, data) => SkeletonContainer(
+                  radius: 0,
+                  width: width,
+                  height: height,
+                ),
+                errorWidget: (_, error, errorObj) => SkeletonContainer(
+                  radius: 0,
+                  width: width,
+                  height: height,
+                  isAnimated: false,
+                ),
               ),
-            ),
-            Stack(
-              alignment: AlignmentDirectional.bottomStart,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.only(
-                    start: AppDimensions.padding5,
-                    bottom: AppDimensions.padding5,
+              Wrap(
+                children: [
+                  Padding(
+                    padding: const EdgeInsetsDirectional.only(
+                      bottom: AppDimensions.padding8,
+                    ),
+                    child: AutoSizeText(
+                      (item.vote ?? 0.0).toString(),
+                      maxFontSize: 16,
+                      style: TextStyle(
+                        backgroundColor: AppColors.BLACK,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.WHITE,
+                      ),
+                    ),
                   ),
-                  child: Container(
+                  Container(
                     color: AppColors.BLACK,
                     width: width,
                     child: AutoSizeText(
-                      (item.vote ?? 0.0).toString(),
+                      item.title ?? '',
                       maxFontSize: 16,
                       style: TextStyle(
                         fontSize: 14,
@@ -73,24 +83,11 @@ class SearchItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
-                Container(
-                  color: AppColors.BLACK,
-                  width: width,
-                  child: AutoSizeText(
-                    item.title ?? '',
-                    maxFontSize: 16,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.WHITE,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+                ],
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

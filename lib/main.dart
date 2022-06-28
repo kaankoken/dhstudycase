@@ -16,6 +16,8 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   route = Routes.router;
+
+  await dotEnv.load(fileName: ".env");
   await setupInjector();
 
   runApp(const ProviderScope(child: DHStudyCase()));

@@ -23,7 +23,6 @@ class NetworkManager {
           requestHeader: true,
           requestBody: true,
           responseBody: true,
-          responseHeader: false,
           error: true,
           compact: true,
           maxWidth: 150,

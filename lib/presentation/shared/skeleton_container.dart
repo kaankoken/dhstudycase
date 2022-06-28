@@ -21,20 +21,21 @@ class SkeletonContainer extends StatefulWidget {
 
 class SkeletonContainerState extends State<SkeletonContainer> with SingleTickerProviderStateMixin {
   late AnimationController animationController;
+  late Animation<double> fadeInFadeOut;
 
   @override
   Widget build(BuildContext context) {
     return widget.isAnimated
         ? FadeTransition(
-            opacity: animationController.drive(CurveTween(curve: Curves.easeInOut)),
+            opacity: fadeInFadeOut,
             child: Container(
               width: widget.width,
               height: widget.height,
               decoration: BoxDecoration(
+                color: AppColors.LIGHT_GREY,
                 borderRadius: BorderRadius.all(
-                  Radius.circular(widget.radius ?? 30),
+                  Radius.circular(widget.radius ?? 0),
                 ),
-                color: AppColors.LIGHT_BLACK,
               ),
             ),
           )
@@ -42,18 +43,40 @@ class SkeletonContainerState extends State<SkeletonContainer> with SingleTickerP
             width: widget.width,
             height: widget.height,
             decoration: BoxDecoration(
+              color: AppColors.LIGHT_GREY,
               borderRadius: BorderRadius.all(
-                Radius.circular(widget.radius ?? 30),
+                Radius.circular(widget.radius ?? 0),
               ),
-              color: AppColors.LIGHT_BLACK,
             ),
           );
+  }
+
+  @override
+  void dispose() {
+    animationController.removeStatusListener(_listener);
+    animationController.dispose();
+    super.dispose();
   }
 
   @override
   void initState() {
     super.initState();
 
-    animationController = AnimationController(vsync: this);
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    );
+
+    animationController.addStatusListener(_listener);
+    animationController.forward();
+    fadeInFadeOut = Tween<double>(begin: 0.0, end: 0.2).animate(animationController);
+  }
+
+  void _listener(AnimationStatus status) {
+    if (status == AnimationStatus.completed) {
+      animationController.reverse();
+    } else if (status == AnimationStatus.dismissed) {
+      animationController.forward();
+    }
   }
 }
